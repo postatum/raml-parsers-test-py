@@ -3,10 +3,9 @@ from . import utils
 
 
 PARSERS = {
-    'ramlfications': parsers.ramlficationsParser,
-    'pyraml': parsers.pyramlParser,
+    'ramlfications': parsers.ramlfications_parser,
+    'pyraml': parsers.pyraml_parser,
 }
-
 
 def main():
     args = utils.parse_args()

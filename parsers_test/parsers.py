@@ -1,7 +1,7 @@
-def ramlficationsParser(fpath):
+def ramlfications_parser(fpath):
     # TODO
     return
 
-def pyramlParser(fpath):
+def pyraml_parser(fpath):
     # TODO
     return

@@ -6,7 +6,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.md')).read()
 
 install_requires = [
-
+    'GitPython==2.1.10',
 ]
 
 setup(
