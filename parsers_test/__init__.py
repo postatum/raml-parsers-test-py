@@ -9,7 +9,7 @@ PARSERS = {
 
 def main():
     args = utils.parse_args()
-    parserFunc = PARSERS[args.parser]
+    parser_func = PARSERS[args.parser]
     ex_dir = utils.clone_tck_repo()
     file_list = utils.list_ramls(ex_dir)
 
@@ -18,7 +18,7 @@ def main():
         success = True
         err = None
         try:
-            parserFunc(fpath)
+            parser_func(fpath)
         except Exception as ex:
             success = False
             err = ex

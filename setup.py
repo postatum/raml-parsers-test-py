@@ -5,10 +5,6 @@ from setuptools import setup, find_packages
 here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.md')).read()
 
-install_requires = [
-    'GitPython==2.1.10',
-]
-
 setup(
     name='raml-parsers-test-py',
     version='0.0.1',
@@ -24,7 +20,6 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
-    install_requires=install_requires,
     entry_points="""\
     [console_scripts]
         raml-test-py = parsers_test:main

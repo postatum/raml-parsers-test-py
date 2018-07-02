@@ -36,7 +36,7 @@ def clone_tck_repo():
 
 def list_ramls(ex_dir):
     files = []
-    for root, dirs, fnames in os.walk(ex_dir):
+    for root, _, fnames in os.walk(ex_dir):
         for fname in fnames:
             if fname.endswith('.raml'):
                 files.append(os.path.join(root, fname))

@@ -1,7 +1,12 @@
-def ramlfications_parser(fpath):
-    # TODO
-    return
+import ramlfications
+import pyraml.parser
 
+
+# https://github.com/spotify/ramlfications
+def ramlfications_parser(fpath):
+    return ramlfications.parse(fpath)
+
+
+# https://github.com/an2deg/pyraml-parser
 def pyraml_parser(fpath):
-    # TODO
-    return
+    return pyraml.parser.load(fpath)
