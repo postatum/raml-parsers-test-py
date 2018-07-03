@@ -13,6 +13,7 @@ def main():
     ex_dir = utils.clone_tck_repo()
     file_list = utils.list_ramls(ex_dir)
 
+    passed = 0
     for fpath in file_list:
         print('> Parsing {}:'.format(fpath), end=' ')
         success = True
@@ -25,7 +26,9 @@ def main():
         if utils.should_fail(fpath):
             success = not success
         if success:
+            passed += 1
             print('OK')
         else:
             err = err if args.verbose else ''
             print('FAIL {}'.format(err))
+    print('\nPassed/Total: {}/{}'.format(passed, len(file_list)))
