@@ -25,6 +25,8 @@ def main():
             err = ex
         if utils.should_fail(fpath):
             success = not success
+            if err is None:
+                err = 'Parsing expected to fail but succeeded'
         if success:
             passed += 1
             print('OK')
