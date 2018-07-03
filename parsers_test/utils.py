@@ -44,4 +44,4 @@ def list_ramls(ex_dir):
 
 
 def should_fail(fpath):
-    return 'invalid' in fpath
+    return 'invalid' in fpath.lower()
