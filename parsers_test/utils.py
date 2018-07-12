@@ -29,7 +29,7 @@ def clone_tck_repo():
     repo = Repo.init(repo_dir)
     origin = repo.create_remote(
         'origin', 'git@github.com:raml-org/raml-tck.git')
-    origin.fetch()
+    origin.fetch('refs/heads/rename-cleanup:refs/heads/origin')
     origin.pull(origin.refs[0].remote_head)
     return os.path.join(repo_dir, 'tests', 'raml-1.0')
 
