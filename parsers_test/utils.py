@@ -2,6 +2,7 @@ import argparse
 import tempfile
 import shutil
 import os
+import json
 
 from git import Repo
 
@@ -35,12 +36,10 @@ def clone_tck_repo():
 
 
 def list_ramls(ex_dir):
-    files = []
-    for root, _, fnames in os.walk(ex_dir):
-        for fname in fnames:
-            if fname.endswith('.raml'):
-                files.append(os.path.join(root, fname))
-    return files
+    manifest_path = os.path.join(ex_dir, 'manifest.json')
+    with open(manifest_path) as f:
+        manifest = json.load(f)
+    return [os.path.join(ex_dir, fp) for fp in manifest['filePaths']]
 
 
 def should_fail(fpath):
