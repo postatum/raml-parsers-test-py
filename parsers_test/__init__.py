@@ -13,7 +13,11 @@ def main():
     ex_dir = utils.clone_tck_repo()
     file_list = utils.list_ramls(ex_dir)
 
-    passed = 0
+    count = {
+        'valid': {'passed': 0, 'total': 0},
+        'invalid': {'passed': 0, 'total': 0}
+    }
+
     for fpath in file_list:
         print('> Parsing {}:'.format(fpath), end=' ')
         success = True
@@ -23,14 +27,21 @@ def main():
         except Exception as ex:
             success = False
             err = ex
-        if utils.should_fail(fpath):
+        should_fail = utils.should_fail(fpath)
+        countKey = 'invalid' if should_fail else 'valid'
+        count[countKey]['total'] += 1
+        if should_fail:
             success = not success
             if err is None:
                 err = 'Parsing expected to fail but succeeded'
         if success:
-            passed += 1
+            count[countKey]['passed'] += 1
             print('OK')
         else:
             err = err if args.verbose else ''
             print('FAIL {}'.format(err))
-    print('\nPassed/Total: {}/{}'.format(passed, len(file_list)))
+    tmpl = '\nPassed/Total: {}/{} (valid: {}/{}, invalid: {}/{})'
+    print(tmpl.format(
+        count['valid']['passed'] + count['invalid']['passed'], len(file_list),
+        count['valid']['passed'], count['valid']['total'],
+        count['invalid']['passed'], count['invalid']['total']))
